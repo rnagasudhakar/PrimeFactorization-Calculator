@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<html>
+<head>
+  <title>Prime Factorization</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>  
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'> 
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+
+
+</head>
+
+<body class="a">
+    <div class="title">
+        <h1>Prime Factorization</h1>
+    </div>
+    
+    <div class="txt">
+        <h2> Calculator Use</h2>
+        <p>
+            Use this prime numbers calculator to find all prime factors of a given integer number up to 10 
+            trillion. This calculator presents:
+        </p>
+        <ol>
+            
+                <li>Prime decomposition in exponential form
+                    </li>
+                       
+            </ol>
+
+        <p>
+            For the first 5000 prime numbers, this calculator indicates the index of the prime number. 
+            The nth prime number is denoted as Prime[n], so Prime[1] = 2, Prime[2] = 3, Prime[3] = 5, and so on.
+        </p>
+        <p>
+            The limit on the input number to factor is less than 10,000,000,000,000 (less than 10 trillion 
+            or a maximum of 13 digits).
+            </p>
+        <h2> What is Prime Factorization?</h2>
+        <p>
+            Prime factorization or integer factorization of a number is breaking a number down into the set of 
+            prime numbers which multiply together to result in the original number. This is also known as prime 
+            decomposition.
+        </p>
+        <h2>Prime Factorization by Trial Division</h2>
+        <p>
+            Say you want to find the prime factors of 100 using trial division. Start by testing each integer to see 
+            if and how often it divides 100 and the subsequent quotients evenly. The resulting set of factors will be 
+            prime since, for example, when 2 is exhausted all multiples of 2 are also exhausted.
+            </p>
+        
+        </div>
+
+        
+    
+        <form id="k">
+            
+            <div class="input">
+
+             <label for="num">Enter a number: </label>
+            
+            <input type="text" class="form-control" id="num" placeholder="Enter a Number">
+            
+            <br></br>
+                
+            
+        </div>
+        
+
+        
+        </form>
+        
+        <div class="input1">
+            <button onclick="Factorisation()" class="btn btn-primary">Submit</button>
+            <button onclick="blah()" class="btn btn-primary">Clear</button>
+            <div class="input3">
+            <p id="ans"></p>
+            <p id="algorithm"></p>
+            </div>
+        </div>
+        
+
+
+        <script>
+
+            
+
+            function Factorisation(){
+                var num=document.getElementById("num").value;
+                if(num=="")
+                {
+                    window.alert("Number cannot be   empty. Please enter number");
+                    return;
+                }
+                
+                let flg = 0;
+                for(let i=0;i<num.length;i++){
+                    if(num.charAt(i)>='0' && num.charAt(i)<='9'){
+
+                    }
+                    else{
+                        flg = 1;
+                    }
+                }
+                if(flg==1){
+                    window.alert("Please enter Valid Number");
+                    return;
+                }
+                var ans="";
+                ans=ans+"The prime  Factorization of number is " + "<br>";
+                
+
+                var k = parseInt(num);
+                let c=0;
+                while(k%2 ==0){
+                    c=c+1;
+                    k=k/2;
+                }
+                
+                if(c>0){
+                    let g = c.toString();
+                    ans=ans+"2^"+c+" * ";
+                }
+                
+                for(let i=3;i<=k;i=i+2){
+                    c=0;
+                    while(k%i==0){
+                            c=c+1;
+                            k=k/i;
+                    }
+                    if(c>0 && i>1){
+                            let g = c.toString();
+                            let g1=i.toString();
+                            ans=ans+g1+"^"+c+" * ";
+                        }
+                }
+                    var ans1="";
+                    if(k>1){
+                            let g = k.toString();
+                            ans=ans+c+" ";
+                            ans1=ans;
+                    }
+                    else{
+                        ans1=ans.slice(0,-2);
+                    }
+                    document.getElementById("ans").innerHTML=ans1;
+                    var algorithm="";
+                   
+                    algorithm = algorithm +  " 1) While n is divisible by 2, print 2 and divide n by 2." + "<br>" ; 
+                algorithm = algorithm+ "2) After step 1, n must be odd. Now start a loop from i = 3 to the square root of n. While i divides n, print i, and divide n by i. After i fails to divide n, increment i by 2 and continue." + "<br>"; 
+                algorithm = algorithm + "3) If n is a prime number and is greater than 2, then n will not become 1 by the above two steps. So print n if it is greater than 2. " + "<br>";
+                document.getElementById("algorithm").innerHTML=algorithm;
+
+                
+            }
+            function blah(){
+                var e="";
+                document.getElementById("algorithm").innerHTML=e;
+                document.getElementById("ans").innerHTML=e;
+                document.getElementById("k").reset();
+
+                }
+        </script>
+    
+</body>
+</html>
